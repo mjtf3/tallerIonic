@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertController } from '@ionic/angular';
-import { App } from '@capacitor/app';
-import { Capacitor } from '@capacitor/core';
+import { AlertController, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-exit',
@@ -11,33 +9,26 @@ import { Capacitor } from '@capacitor/core';
 })
 export class ExitPage implements OnInit {
 
-  constructor(private alertController: AlertController) { }
+  constructor(
+    private alertController: AlertController,
+    private navCtrl: NavController
+  ) { }
 
   ngOnInit() {
   }
 
-  async confirmExit(): Promise<void> {
+  async onYes() {
     const alert = await this.alertController.create({
-      header: 'Confirmar salida',
-      message: '¿Seguro que quieres salir de la aplicación?',
-      buttons: [
-        {
-          text: 'Cancelar',
-          role: 'cancel',
-        },
-        {
-          text: 'Salir',
-          role: 'destructive',
-          handler: () => {
-            if (Capacitor.isNativePlatform()) {
-              App.exitApp();
-            }
-          },
-        },
-      ],
+      header: 'Exit App',
+      message: 'You have decided to close the app. Since this is a web environment, the app cannot be closed automatically.',
+      buttons: ['OK']
     });
 
     await alert.present();
+  }
+
+  onNo() {
+    this.navCtrl.navigateBack('/tabs/wiki');
   }
 
 }

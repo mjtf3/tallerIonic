@@ -1,0 +1,17 @@
+.logo-container {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+.logo {
+  max-width: 200px;
+  height: auto;
+}
+
+.copyright {
+  font-size: 0.8em;
+  text-align: right;
+  margin-top: 20px;
+  color: var(--ion-color-medium);
+}

@@ -5,43 +5,18 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">About</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="logo-container">
+    <img src="../../assets/icon/images/categories/sw.png" alt="Star Wars Logo" class="logo">
+  </div>
 
-  <ion-list>
-    <ion-item>
-      <ion-label>
-        <h2>Nombre de la App</h2>
-        <p>Wiki App Ionic</p>
-      </ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>
-        <h2>Fecha</h2>
-        <p>11/05/2026</p>
-      </ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>
-        <h2>Versión</h2>
-        <p>0.0.1</p>
-      </ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>
-        <h2>Autores</h2>
-        <p>Manuel José Tornero Fuster</p>
-        <p>Marcos Seva Berenguer</p>
-      </ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>
-        <h2>Descripción</h2>
-        <p>Aplicación de ejemplo para explorar contenido tipo wiki.</p>
-      </ion-label>
-    </ion-item>
-  </ion-list>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Wiki Star Wars, ver 1.0</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p>Esta aplicación permite explorar el vasto universo de Star Wars, incluyendo información detallada sobre personajes, planetas, especies y naves espaciales de la saga.</p>
+      <p class="copyright">© 2026 Wiki Star Wars Inc. Todos los derechos reservados.</p>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
