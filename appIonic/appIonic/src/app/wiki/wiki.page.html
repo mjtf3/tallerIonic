@@ -10,4 +10,13 @@
       <ion-title size="large">wiki</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <ion-list>
+    <ion-list-header>
+      <ion-label>Categories</ion-label>
+    </ion-list-header>
+    <ion-item *ngFor="let category of categories">
+      {{ category }}
+    </ion-item>
+  </ion-list>
 </ion-content>
