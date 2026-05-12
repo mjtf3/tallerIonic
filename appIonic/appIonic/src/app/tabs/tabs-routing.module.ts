@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
+import { NgModule } from '@angular/core';
 
 const routes: Routes = [
   {
@@ -10,6 +10,10 @@ const routes: Routes = [
       {
         path: 'wiki',
         loadChildren: () => import('../wiki/wiki.module').then(m => m.WikiPageModule)
+      },
+      {
+        path: 'favorites',
+        loadChildren: () => import('../favorites/favorites.module').then(m => m.FavoritesPageModule)
       },
       {
         path: 'about',
