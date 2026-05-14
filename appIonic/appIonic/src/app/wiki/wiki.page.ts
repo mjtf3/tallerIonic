@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { Category } from "../models/category";
 
 @Component({
   selector: "app-wiki",
@@ -7,9 +8,26 @@ import { Component, OnInit } from "@angular/core";
   standalone: false,
 })
 export class WikiPage implements OnInit {
-  readonly categories: string[] = ["People", "Planets", "Species", "Starships"];
+  readonly categoriesMockup: string = "./assets/data/categories.json";
+
+  categories: Category[] = [];
+  selectedCategory: string = "";
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.getData();
+  }
+
+  getData() {
+    fetch(this.categoriesMockup)
+      .then((response) => response.json())
+      .then(json => {
+        this.categories = json;
+      });
+  }
+
+  selectCategory(name: string) {
+    this.selectedCategory = name;
+  }
 }

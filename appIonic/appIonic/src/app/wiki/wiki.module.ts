@@ -1,19 +1,24 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
 import { IonicModule } from '@ionic/angular';
-
 import { WikiPageRoutingModule } from './wiki-routing.module';
-
 import { WikiPage } from './wiki.page';
+import { CategoryComponent } from '../category/category.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { WikiService } from '../services/wiki';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    WikiPageRoutingModule
+    WikiPageRoutingModule,
+    HttpClientModule,
+    CategoryComponent
+  ],
+  providers: [
+    WikiService
   ],
   declarations: [WikiPage]
 })
