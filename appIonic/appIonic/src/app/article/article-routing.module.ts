@@ -1,16 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { WikiPage } from './wiki.page';
+import { ArticlePage } from './article.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: WikiPage
-  },
-  {
-    path: 'article/:cat/:id',
-    loadChildren: () => import('../article/article.module').then(m => m.ArticlePageModule)
+    component: ArticlePage
   }
 ];
 
@@ -18,4 +14,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class WikiPageRoutingModule {}
+export class ArticlePageRoutingModule {}

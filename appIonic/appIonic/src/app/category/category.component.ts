@@ -37,4 +37,8 @@ export class CategoryComponent  implements OnInit {
       }
     )
   }
+
+  generateURL(cat: string, id: string): string {
+    return `/tabs/wiki/article/${cat}/${id}`;
+  }
 }
