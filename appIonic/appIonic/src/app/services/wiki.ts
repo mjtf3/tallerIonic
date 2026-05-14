@@ -16,4 +16,10 @@ export class WikiService {
       this.API_URL + category + "/"
     );
   }
+
+  public getArticle(category: string, id: string): Observable<any> {
+    return this.http.get<any>(
+      this.API_URL + category + "/" + id
+    );
+  }
 }
