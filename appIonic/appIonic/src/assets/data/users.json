@@ -1,0 +1,14 @@
+[
+  {
+    "email": "luke@rebellion.com",
+    "password": "123456"
+  },
+  {
+    "email": "leia@rebellion.com",
+    "password": "123456"
+  },
+  {
+    "email": "han@falcon.com",
+    "password": "123456"
+  }
+]

@@ -1,13 +1,61 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>login</ion-title>
+    <ion-title>Login</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">login</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Iniciar sesión</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <ion-list>
+          <ion-item>
+            <ion-input
+              type="email"
+              label="Email"
+              labelPlacement="stacked"
+              placeholder="tu@email.com"
+              formControlName="email"
+            ></ion-input>
+          </ion-item>
+          <ion-text color="danger" *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.hasError('required')">
+            <p>El email es obligatorio.</p>
+          </ion-text>
+          <ion-text color="danger" *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.hasError('email')">
+            <p>Introduce un email válido.</p>
+          </ion-text>
+
+          <ion-item>
+            <ion-input
+              type="password"
+              label="Clave"
+              labelPlacement="stacked"
+              placeholder="Mínimo 6 caracteres"
+              formControlName="password"
+            ></ion-input>
+          </ion-item>
+          <ion-text color="danger" *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.hasError('required')">
+            <p>La clave es obligatoria.</p>
+          </ion-text>
+          <ion-text color="danger" *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.hasError('minlength')">
+            <p>La clave debe tener al menos 6 caracteres.</p>
+          </ion-text>
+        </ion-list>
+
+        <ion-button expand="block" type="submit">Entrar</ion-button>
+      </form>
+
+      <ion-alert
+        [isOpen]="error.length > 0"
+        header="Error"
+        [message]="error"
+        [buttons]="['Aceptar']"
+        (didDismiss)="error = ''"
+      ></ion-alert>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
