@@ -14,46 +14,51 @@
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <ion-list>
           <ion-item>
+            <ion-icon name="mail" slot="start"></ion-icon>
             <ion-input
               type="email"
               label="Email"
-              labelPlacement="stacked"
               placeholder="tu@email.com"
               formControlName="email"
             ></ion-input>
           </ion-item>
-          <ion-text color="danger" *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.hasError('required')">
+          <ion-text color="warning" *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.hasError('required')">
             <p>El email es obligatorio.</p>
           </ion-text>
-          <ion-text color="danger" *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.hasError('email')">
+          <ion-text color="warning" *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.hasError('email')">
             <p>Introduce un email válido.</p>
           </ion-text>
 
           <ion-item>
+            <ion-icon name="lock-closed" slot="start"></ion-icon>
             <ion-input
               type="password"
               label="Clave"
-              labelPlacement="stacked"
               placeholder="Mínimo 6 caracteres"
               formControlName="password"
             ></ion-input>
           </ion-item>
-          <ion-text color="danger" *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.hasError('required')">
+          <ion-text color="warning" *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.hasError('required')">
             <p>La clave es obligatoria.</p>
           </ion-text>
-          <ion-text color="danger" *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.hasError('minlength')">
+          <ion-text color="warning" *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.hasError('minlength')">
             <p>La clave debe tener al menos 6 caracteres.</p>
           </ion-text>
         </ion-list>
 
-        <ion-button expand="block" type="submit">Entrar</ion-button>
+        <ion-button icon-left size="medium" expand="full" color="dark" type="submit" 
+          tappable [disabled]="loginForm.invalid"
+        >
+          <ion-icon name="log-in"></ion-icon>
+          Entrar
+        </ion-button>
       </form>
 
       <ion-alert
         [isOpen]="error.length > 0"
-        header="Error"
+        header="Warning!"
         [message]="error"
-        [buttons]="['Aceptar']"
+        [buttons]="['Ok']"
         (didDismiss)="error = ''"
       ></ion-alert>
     </ion-card-content>
