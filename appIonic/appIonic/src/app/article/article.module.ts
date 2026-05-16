@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { ArticlePageRoutingModule } from './article-routing.module';
 
 import { ArticlePage } from './article.page';
+import { StorageService } from '../services/storage';
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import { ArticlePage } from './article.page';
     IonicModule,
     ArticlePageRoutingModule
   ],
+  providers: [StorageService],
   declarations: [ArticlePage]
 })
 export class ArticlePageModule {}

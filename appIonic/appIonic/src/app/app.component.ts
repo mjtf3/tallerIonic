@@ -8,9 +8,18 @@ import { ToastController } from '@ionic/angular';
   standalone: false,
 })
 export class AppComponent implements OnInit {
-  constructor(private toastController: ToastController) {}
+  readonly menuFile:string = "../assets/data/menu.json";
+  menuOptions = [];
+
+  constructor(private toastController: ToastController) {
+    this.presentToast();
+  }
 
   async ngOnInit() {
+    this.getMenu();
+  }
+
+  async presentToast() {
     const toast = await this.toastController.create({
       message: 'Welcome to the Star Wars Wiki App!',
       duration: 2500,
@@ -18,5 +27,14 @@ export class AppComponent implements OnInit {
     });
 
     await toast.present();
+  }
+
+  getMenu() {
+    fetch(this.menuFile)
+      .then(res => res.json())
+      .then(json => {
+        this.menuOptions = json;
+        console.log(this.menuOptions);
+      });
   }
 }

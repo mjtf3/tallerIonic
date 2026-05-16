@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { FavoritesPageRoutingModule } from './favorites-routing.module';
 
 import { FavoritesPage } from './favorites.page';
+import { StorageService } from '../services/storage';
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import { FavoritesPage } from './favorites.page';
     IonicModule,
     FavoritesPageRoutingModule
   ],
+  providers: [StorageService],
   declarations: [FavoritesPage]
 })
 export class FavoritesPageModule {}

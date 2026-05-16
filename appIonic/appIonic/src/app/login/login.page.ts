@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from '../models/user';
 import { UserService } from '../services/user';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,8 @@ export class LoginPage implements OnInit {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private userSrv: UserService
+    private userSrv: UserService,
+    private menuCtrl: MenuController
   ) { }
 
   ngOnInit() {
@@ -45,6 +47,10 @@ export class LoginPage implements OnInit {
     }
 
     this.error = 'Error, credenciales incorrectas';
+  }
+
+  ionViewWillEnter() {
+    this.menuCtrl.enable(false, "principal");
   }
 
 }

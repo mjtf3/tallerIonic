@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Storage } from '@ionic/storage-angular';
+import { StorageService } from '../services/storage';
 
 @Component({
   selector: 'app-favorites',
@@ -8,9 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FavoritesPage implements OnInit {
 
-  constructor() { }
+  public favorites: any[] = [];
+
+  constructor(private storageSrv: StorageService) { }
 
   ngOnInit() {
+    this.storageSrv.get('favorites').then((data) => {
+      this.favorites = data??[];
+    });
+  }
+
+  generateURL(cat: string, id: string) {
+    return "/tabs/wiki/article/" + cat + "/" + id;
   }
 
 }
