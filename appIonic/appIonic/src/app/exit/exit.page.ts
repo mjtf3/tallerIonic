@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController, NavController } from '@ionic/angular';
+import { App } from '@capacitor/app';
+import { Capacitor } from '@capacitor/core';
 
 @Component({
   selector: 'app-exit',
@@ -18,6 +20,11 @@ export class ExitPage implements OnInit {
   }
 
   async onYes() {
+    if (Capacitor.isNativePlatform()) {
+      await App.exitApp();
+      return;
+    }
+
     const alert = await this.alertController.create({
       header: 'Exit App',
       message: 'You have decided to close the app. Since this is a web environment, the app cannot be closed automatically.',
